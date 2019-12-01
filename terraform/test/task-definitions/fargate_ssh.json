@@ -1,0 +1,36 @@
+[
+    {
+        "essential": true,
+        "image": "${DOCKER_IMAGE_URL}",
+        "name": "fargate_ssh",
+        "network_mode": "awsvpc",
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${AWS_LOGS_GROUP}",
+                "awslogs-region": "${AWS_LOGS_REGION}",
+                "awslogs-stream-prefix": "logs"
+            }
+        },
+        "environment": [
+            {
+                "name": "AWS_REGION",
+                "value": "${AWS_REGION}"
+            },
+            {
+                "name": "IAM_ROLE",
+                "value": "${IAM_ROLE}"
+            }
+        ],
+        "secrets": [
+            {
+                "name": "SSM_AGENT_CODE",
+                "valueFrom": "${SSM_AGENT_CODE}"
+            },
+            {
+                "name": "SSM_AGENT_ID",
+                "valueFrom": "${SSM_AGENT_ID}"
+            }
+        ]
+    }
+]
