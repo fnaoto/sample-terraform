@@ -1,0 +1,7 @@
+# Ignore files
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+
+# Exceptions
+!**/.terraform/environment
