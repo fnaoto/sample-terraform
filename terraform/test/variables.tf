@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "project" {
-  default = "aws-test"
+  default = "aws-sample"
 }
 
 variable "vpc_cidr" {
