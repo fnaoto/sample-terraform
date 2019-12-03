@@ -5,3 +5,6 @@
 
 # Exceptions
 !**/.terraform/environment
+
+# Macos
+**/.DS_Store
