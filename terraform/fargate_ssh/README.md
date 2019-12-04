@@ -30,10 +30,8 @@ $ ./push_ecr.sh
 ## 3. Start container up
 
 ```sh
-# [Prepare] Install fargatecli
-
-$ aws configure --profile test
-$ export AWS_PROFILE=test
+$ go get -u github.com/awslabs/fargatecli
+$ export PATH=$HOME/go/bin:$PATH
 $ export AWS_REGION=ap-northeast-1
 
 # Check ECS Service
@@ -45,6 +43,24 @@ $ fargatecli service scale aws-sample-test-fargate_ssh 1 \
   --cluster aws-sample-test-fargate_ssh
 
 # Check service
+$ fargatecli service info aws-sample-test-fargate_ssh \
+  --cluster aws-sample-test-fargate_ssh
+```
+
+## 4. Start session
+
+```sh
+# Get target id and start session
+$ aws ssm describe-instance-information --query 'InstanceInformationList[0].InstanceId'
+$ aws ssm start-session --target <target id>
+```
+
+## 5. Stop container
+
+```sh
+$ fargatecli service scale aws-sample-test-fargate_ssh 0 \
+  --cluster aws-sample-test-fargate_ssh
+
 $ fargatecli service info aws-sample-test-fargate_ssh \
   --cluster aws-sample-test-fargate_ssh
 ```
