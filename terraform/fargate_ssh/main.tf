@@ -17,8 +17,8 @@ module "fargate_ssh" {
   subnets               = "${module.subnet.private_subnet_ids}"
   security_groups       = ["${module.sg_deny_ingress.id}"]
   assign_public_ip      = false
-  task_cpu              = 512
-  task_memory           = 1024
+  task_cpu              = 256
+  task_memory           = 512
   log_group_name        = "/aws/ecs/${var.project}/${local.ws}/fargate_ssh"
   tags                  = "${local.tags}"
   container_definitions = "${file("task-definitions/fargate_ssh.json")}"

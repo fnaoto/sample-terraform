@@ -2,8 +2,9 @@ FROM amazonlinux:2
 
 ARG SSM_AGENT_CODE
 ARG SSM_AGENT_ID
-ENV AWS_PROFILE test
-ENV AWS_REGION ap-northeast-1
+ARG AWS_REGION
+ARG ACCESS_KEY_ID
+ARG SECRET_ACCESS_KEY
 
 RUN yum update -y && \
     yum install -y amazon-ssm-agent
