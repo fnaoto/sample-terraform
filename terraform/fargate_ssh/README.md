@@ -20,7 +20,7 @@ $ terraform apply
 ```sh
 $ terraform output # memo output info
 $ cd docker
-$ export ${ECR_URL} # check build.sh and export output info
+# Edit docker/push_ecr.sh and Fix `export`
 
 # [Prepare] Install docker and awscli
 

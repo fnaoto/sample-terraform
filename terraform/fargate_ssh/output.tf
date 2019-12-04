@@ -3,13 +3,9 @@ output "ecr_url" {
 }
 
 output "activations_code" {
-  value = "${module.secret_activations_code.arn}"
+  value = "${module.ssm_activations.code}"
 }
 
 output "activations_id" {
-  value = "${module.secret_activations_id.arn}"
-}
-
-output "aws_region" {
-  value = "${var.region}"
+  value = "${module.ssm_activations.id}"
 }

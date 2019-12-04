@@ -25,12 +25,8 @@ module "fargate_ssh" {
 
   container_definitions_vars = {
     DOCKER_IMAGE_URL = "${module.ecr_ssh.repository_url}"
-    SSM_AGENT_CODE   = "${module.secret_activations_code.arn}"
-    SSM_AGENT_ID     = "${module.secret_activations_id.arn}"
     AWS_LOGS_GROUP   = "/aws/ecs/${var.project}/${local.ws}/fargate_ssh"
     AWS_LOGS_REGION  = "${var.region}"
-    AWS_REGION       = "${var.region}"
-    IAM_ROLE         = "${module.ssm_activations.role_name}"
   }
 }
 
@@ -40,18 +36,6 @@ module "sg_deny_ingress" {
   vpc_id              = "${module.vpc.vpc_id}"
   ingress_port        = 0
   tags                = "${local.tags}"
-}
-
-module "secret_activations_code" {
-  source        = "../modules/secrets_manager"
-  name          = "${var.project}/${local.ws}/activations_code"
-  secret_string = "${module.ssm_activations.code}"
-}
-
-module "secret_activations_id" {
-  source        = "../modules/secrets_manager"
-  name          = "${var.project}/${local.ws}/activations_id"
-  secret_string = "${module.ssm_activations.id}"
 }
 
 module "ssm_activations" {
