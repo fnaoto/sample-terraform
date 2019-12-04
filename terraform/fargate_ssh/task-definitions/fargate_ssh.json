@@ -11,26 +11,6 @@
                 "awslogs-region": "${AWS_LOGS_REGION}",
                 "awslogs-stream-prefix": "logs"
             }
-        },
-        "environment": [
-            {
-                "name": "AWS_REGION",
-                "value": "${AWS_REGION}"
-            },
-            {
-                "name": "IAM_ROLE",
-                "value": "${IAM_ROLE}"
-            }
-        ],
-        "secrets": [
-            {
-                "name": "SSM_AGENT_CODE",
-                "valueFrom": "${SSM_AGENT_CODE}"
-            },
-            {
-                "name": "SSM_AGENT_ID",
-                "valueFrom": "${SSM_AGENT_ID}"
-            }
-        ]
+        }
     }
 ]
