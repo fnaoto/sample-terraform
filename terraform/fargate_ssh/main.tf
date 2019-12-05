@@ -37,6 +37,7 @@ module "sg_deny_ingress" {
 module "ssm_activations" {
   source = "../modules/ssm_activations"
   name   = "${local.name}-ssm-activations"
+  tags   = local.tags
 }
 
 module "subnet" {

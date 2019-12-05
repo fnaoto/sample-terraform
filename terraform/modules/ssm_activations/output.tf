@@ -1,9 +1,9 @@
 output "id" {
-  value = aws_ssm_activation.activation.id
+  value = aws_ssm_activation.ssm.id
 }
 
 output "code" {
-  value = aws_ssm_activation.activation.activation_code
+  value = aws_ssm_activation.ssm.activation_code
 }
 
 output "role_name" {

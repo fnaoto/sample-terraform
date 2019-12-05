@@ -1,7 +1,8 @@
-resource "aws_ssm_activation" "activation" {
+resource "aws_ssm_activation" "ssm" {
   name               = var.name
   iam_role           = aws_iam_role.ssm.id
-  registration_limit = "10"
+  registration_limit = 10
+  tags               = var.tags
 }
 
 resource "aws_iam_role" "ssm" {
