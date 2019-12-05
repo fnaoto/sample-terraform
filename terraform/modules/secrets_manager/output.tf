@@ -1,7 +1,8 @@
 output "arn" {
-  value = "${aws_secretsmanager_secret.secrets.arn}"
+  value = aws_secretsmanager_secret.secrets.arn
 }
 
 output "name" {
-  value = "${aws_secretsmanager_secret.secrets.name}"
+  value = aws_secretsmanager_secret.secrets.name
 }
+
