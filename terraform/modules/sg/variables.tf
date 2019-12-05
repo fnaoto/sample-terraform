@@ -1,11 +1,15 @@
-variable "name" {}
-variable "vpc_id" {}
+variable "name" {
+}
+
+variable "vpc_id" {
+}
 
 variable "egress_port" {
   default = 0
 }
 
-variable "ingress_port" {}
+variable "ingress_port" {
+}
 
 variable "ingress_protocol" {
   default = "tcp"
@@ -32,5 +36,6 @@ variable "egress_source_sg_id" {
 }
 
 variable "tags" {
-  type = "map"
+  type = map(string)
 }
+

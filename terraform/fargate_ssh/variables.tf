@@ -11,11 +11,12 @@ variable "vpc_cidr" {
 }
 
 locals {
-  ws   = "${terraform.workspace}"
+  ws   = terraform.workspace
   name = "${var.project}-${terraform.workspace}"
 
   tags = {
-    env     = "${terraform.workspace}"
-    project = "${var.project}"
+    env     = terraform.workspace
+    project = var.project
   }
 }
+

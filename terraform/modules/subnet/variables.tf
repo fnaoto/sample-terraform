@@ -1,8 +1,11 @@
-variable "vpc_id" {}
-variable "vpc_cidr" {}
+variable "vpc_id" {
+}
+
+variable "vpc_cidr" {
+}
 
 variable "public_subnets" {
-  type = "map"
+  type = map(string)
 
   default = {
     ap-northeast-1a = "1"
@@ -12,7 +15,7 @@ variable "public_subnets" {
 }
 
 variable "private_subnets" {
-  type = "map"
+  type = map(string)
 
   default = {
     ap-northeast-1a = "10"
@@ -21,16 +24,19 @@ variable "private_subnets" {
   }
 }
 
-variable "gateway_id" {}
+variable "gateway_id" {
+}
 
 variable "tags" {
-  type = "map"
+  type = map(string)
 }
 
 # data
 
-data "aws_availability_zones" "az" {}
+data "aws_availability_zones" "az" {
+}
 
 locals {
-  az_names = "${data.aws_availability_zones.az.names}"
+  az_names = data.aws_availability_zones.az.names
 }
+

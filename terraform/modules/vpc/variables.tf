@@ -1,7 +1,8 @@
-variable "cidr_block" {}
+variable "cidr_block" {
+}
 
 variable "tags" {
-  type = "map"
+  type = map(string)
 }
 
 variable "enable_dns_support" {
@@ -11,3 +12,4 @@ variable "enable_dns_support" {
 variable "enable_dns_hostnames" {
   default = false
 }
+

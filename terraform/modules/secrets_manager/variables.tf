@@ -1,4 +1,6 @@
-variable "secret_string" {}
+variable "secret_string" {
+}
 
-variable "name" {}
+variable "name" {
+}
 
