@@ -1,2 +1,2 @@
-# aws-sample
-sample code for aws.
+# terraform-sample
+sample code of terraform.
