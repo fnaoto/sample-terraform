@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 module "ecr_ssh" {
-  source = "../modules/ecr"
+  source = "../modules/aws/ecr"
   name   = "${var.project}/${local.ws}/ecr_ssh"
 }
 
 module "fargate_ssh" {
-  source                = "../modules/fargate"
+  source                = "../modules/aws/fargate"
   name                  = "${local.name}-fargate_ssh"
   subnets               = module.subnet.private_subnet_ids
   security_groups       = [module.sg_deny_ingress.id]
@@ -27,7 +27,7 @@ module "fargate_ssh" {
 }
 
 module "sg_deny_ingress" {
-  source       = "../modules/sg"
+  source       = "../modules/aws/sg"
   name         = "${local.name}_deny_ingress"
   vpc_id       = module.vpc.vpc_id
   ingress_port = 0
@@ -35,13 +35,13 @@ module "sg_deny_ingress" {
 }
 
 module "ssm_activations" {
-  source = "../modules/ssm_activations"
+  source = "../modules/aws/ssm_activations"
   name   = "${local.name}-ssm-activations"
   tags   = local.tags
 }
 
 module "subnet" {
-  source     = "../modules/subnet"
+  source     = "../modules/aws/subnet"
   vpc_id     = module.vpc.vpc_id
   vpc_cidr   = module.vpc.cidr_block
   gateway_id = module.vpc.gateway_id
@@ -49,14 +49,14 @@ module "subnet" {
 }
 
 module "vpc" {
-  source               = "../modules/vpc"
+  source               = "../modules/aws/vpc"
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   tags                 = local.tags
 }
 
 module "vpc_endpoint" {
-  source                  = "../modules/vpc_endpoint"
+  source                  = "../modules/aws/vpc_endpoint"
   region                  = var.region
   vpc_id                  = module.vpc.vpc_id
   subnet_ids              = module.subnet.private_subnet_ids
@@ -66,7 +66,7 @@ module "vpc_endpoint" {
 }
 
 module "sg_443" {
-  source              = "../modules/sg"
+  source              = "../modules/aws/sg"
   name                = "${local.name}_443"
   vpc_id              = module.vpc.vpc_id
   ingress_port        = 443
