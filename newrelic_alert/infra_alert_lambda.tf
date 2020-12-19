@@ -1,7 +1,7 @@
 module "infra_alert_lambda_error_sum" {
   source               = "../modules/newrelic/infra_alert"
   name                 = "${local.name} lambda_error_sum"
-  event                = "LambdaFunctionSample"
+  event                = "ServerlessSample"
   select               = "provider.errors.Sum"
   where                = "awsAccountId = ${data.aws_caller_identity.current.account_id}"
   integration_provider = "LambdaFunction"
