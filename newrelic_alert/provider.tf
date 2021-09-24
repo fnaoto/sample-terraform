@@ -1,6 +1,19 @@
+terraform {
+  required_providers {
+    newrelic = {
+      source  = "newrelic/newrelic"
+      version = "~> 2.6.0"
+    }
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.57"
+    }
+  }
+  required_version = ">= 0.14"
+}
+
 provider "newrelic" {
-  region  = "US"
-  version = "~> 2.6.0"
+  region = "US"
 }
 
 provider "aws" {
