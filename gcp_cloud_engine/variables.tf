@@ -3,7 +3,7 @@ provider "google" {
 }
 
 terraform {
-  # backend "gcs" {}
+  backend "gcs" {}
 }
 
 locals {
