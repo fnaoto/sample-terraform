@@ -11,3 +11,7 @@ variable region {
   type    = string
   default = "asia-northeast1"
 }
+
+variable "network" {
+  type = string
+}

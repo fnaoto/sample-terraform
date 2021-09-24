@@ -8,9 +8,10 @@ terraform {
 
 locals {
   name = "sample"
+  zone = "asia-northeast1-a"
+
   tags = [
     local.name,
-    "http-server",
-    "https-server",
+    "kubernetes",
   ]
 }
