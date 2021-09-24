@@ -1,7 +1,7 @@
 module "dns_zone" {
   source      = "../modules/gcp/dns_zone"
   name        = local.name
-  network_url = module.subnet.google_compute_network_id
+  network_url = module.network.google_compute_network_id
 }
 
 module "dns_record_for_database" {
